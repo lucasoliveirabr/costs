@@ -32,6 +32,17 @@
       "cost": 0,
       "services": [],
       "id": 3
+    },
+    {
+      "name": "Melhoria da infra",
+      "budget": "900",
+      "category": {
+        "id": "1",
+        "name": "Infraestrutura"
+      },
+      "cost": 0,
+      "services": [],
+      "id": 4
     }
   ],
   "categories": [
