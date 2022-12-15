@@ -1,17 +1,6 @@
 {
   "projects": [
     {
-      "name": "Projeto Teste",
-      "budget": "5000",
-      "category": {
-        "id": "2",
-        "name": "Desenvolvimento"
-      },
-      "cost": 0,
-      "services": [],
-      "id": 1
-    },
-    {
       "name": "Grande Projeto",
       "budget": "50000",
       "category": {
@@ -35,7 +24,7 @@
     },
     {
       "name": "Melhoria da infra",
-      "budget": "900",
+      "budget": "5000",
       "category": {
         "id": "1",
         "name": "Infraestrutura"
