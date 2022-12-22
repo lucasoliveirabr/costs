@@ -23,8 +23,8 @@
       "id": 3
     },
     {
-      "name": "Melhoria da infra",
-      "budget": "5000",
+      "name": "Melhoria da infraestrutura",
+      "budget": "10000",
       "category": {
         "id": "1",
         "name": "Infraestrutura"
