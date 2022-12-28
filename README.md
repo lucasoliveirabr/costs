@@ -8,4 +8,4 @@
   Aplicação web de gestão orçamentária de projetos feita em React
 </p>
 
-![image](https://user-images.githubusercontent.com/108704306/201484467-e2ea84e3-610b-479d-878a-a8b4de9c2ea5.png)
+![costs](https://user-images.githubusercontent.com/108704306/209760812-982a8eec-117b-4c54-b779-041b9fdae551.png)

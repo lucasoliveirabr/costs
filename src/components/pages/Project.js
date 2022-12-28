@@ -1,4 +1,4 @@
-import { parse, v4 as uuidv4 } from "uuid";
+import { v4 as uuidv4 } from "uuid";
 
 import styles from "./Project.module.css";
 
@@ -133,6 +133,12 @@ function Project() {
         setShowServiceForm(!showServiceForm);
     }
 
+    let porcentagemUtilizadaOrcamento = () => {
+        let porcentagem = project.cost / project.budget * 100;
+        let porcentagemFormatada = Number(porcentagem/100).toLocaleString(undefined, {style: 'percent', minimumFractionDigits:2});
+        return porcentagemFormatada;
+    }
+
     return (
         <>
             {project.name ? (
@@ -153,7 +159,7 @@ function Project() {
                                         <span>Total do Orçamento: </span> R${project.budget}
                                     </p>
                                     <p>
-                                        <span>Total Utilizado: </span> R${project.cost}
+                                        <span>Total Utilizado: </span> R${project.cost} ({porcentagemUtilizadaOrcamento()})
                                     </p>
                                 </div>
                             ) : (
