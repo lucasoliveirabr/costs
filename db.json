@@ -29,9 +29,27 @@
         "id": "1",
         "name": "Infraestrutura"
       },
+      "cost": 10000,
+      "services": [
+        {
+          "name": "PCs",
+          "cost": "10000",
+          "description": "Compra de PCs.",
+          "id": "26d547fd-cea3-42b6-97b9-b5ed6ffc4192"
+        }
+      ],
+      "id": 4
+    },
+    {
+      "name": "teste",
+      "budget": "100",
+      "category": {
+        "id": "1",
+        "name": "Infraestrutura"
+      },
       "cost": 0,
       "services": [],
-      "id": 4
+      "id": 5
     }
   ],
   "categories": [

@@ -1,0 +1,9 @@
+.body_page {
+    margin: auto;
+    margin-bottom: 250px;
+    text-align: center;
+}
+
+.body_page p {
+    font-size: 20px;
+}

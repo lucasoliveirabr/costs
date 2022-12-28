@@ -1,7 +1,9 @@
+import styles from "./Projects.module.css";
+
 function Company() {
     return (
-        <div>
-            <h1>Company</h1>
+        <div className={styles.project_container}>
+            <h1>Empresa</h1>
         </div>
     )
 }
