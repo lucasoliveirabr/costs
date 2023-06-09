@@ -10,7 +10,7 @@ import ProjectCard from "../project/ProjectCard";
 
 import styles from "./Projects.module.css";
 
-function Projects() {
+export default function Projects() {
     const [projects, setProjects] = useState([]);
     const [removeLoading, setRemoveLoading] = useState(false);
     const [projectMessage, setProjectMessage] = useState("");
@@ -75,5 +75,3 @@ function Projects() {
         </div>
     )
 }
-
-export default Projects;

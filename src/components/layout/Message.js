@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 
 import styles from "./Message.module.css";
 
-function Message({ type, msg }) {
+export default function Message({ type, msg }) {
 
     const [visible, setVisible] = useState(false);
 
@@ -33,5 +33,3 @@ function Message({ type, msg }) {
         </>
     )
 }
-
-export default Message;

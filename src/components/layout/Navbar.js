@@ -5,7 +5,7 @@ import Container from "./Container";
 import styles from "./Navbar.module.css";
 import logo from "../../img/costs_logo.png";
 
-function Navbar() {
+export default function Navbar() {
     return (
         <nav className={styles.navbar}>
             <Container>
@@ -30,5 +30,3 @@ function Navbar() {
         </nav>
     )
 }
-
-export default Navbar;

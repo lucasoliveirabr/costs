@@ -5,7 +5,7 @@ import {BsPencil, BsFillTrashFill} from "react-icons/bs";
 
 import { useState, useEffect } from "react";
 
-function ProjectCard({id, name, budget, category, handleRemove}) {
+export default function ProjectCard({id, name, budget, category, handleRemove}) {
 
     const remove = (e) => {
         e.preventDefault();
@@ -48,5 +48,3 @@ function ProjectCard({id, name, budget, category, handleRemove}) {
         </div>
     )
 }
-
-export default ProjectCard;

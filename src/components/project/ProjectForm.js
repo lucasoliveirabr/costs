@@ -6,7 +6,7 @@ import SubmitButton from "../form/SubmitButton";
 
 import styles from "./ProjectForm.module.css";
 
-function ProjectForm({ handleSubmit, btnText, projectData }) {
+export default function ProjectForm({ handleSubmit, btnText, projectData }) {
 
     const [categories, setCategories] = useState([]);
     const [project, setProject] = useState(projectData || {});
@@ -51,5 +51,3 @@ function ProjectForm({ handleSubmit, btnText, projectData }) {
         </form>
     )
 }
-
-export default ProjectForm;

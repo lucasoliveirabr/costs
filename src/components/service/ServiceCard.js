@@ -2,7 +2,7 @@ import styles from "../project/ProjectCard.module.css";
 
 import {BsFillTrashFill} from "react-icons/bs";
 
-function ServiceCard({ id, name, cost, description, handleRemove }) {
+export default function ServiceCard({ id, name, cost, description, handleRemove }) {
 
     const remove = (e) => {
         e.preventDefault();
@@ -25,5 +25,3 @@ function ServiceCard({ id, name, cost, description, handleRemove }) {
         </div>
     )
 }
-
-export default ServiceCard;
