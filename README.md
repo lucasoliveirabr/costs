@@ -23,7 +23,7 @@ Após baixar o repositório:
 Executar o banco de dados:
 
 ```bash
-- npm backend
+- npm run backend
 ```
 
 Executar o projeto:
