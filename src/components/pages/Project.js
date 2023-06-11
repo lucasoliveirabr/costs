@@ -41,7 +41,7 @@ export default function Project() {
         setMessage("");
         
         if (project.budget < project.cost) {
-            setMessage("O orçamento não pode ser menor que o custo do projeto!")
+            setMessage("O orçamento do projeto não pode ser menor do que o custo dos serviços!")
             setType("error")
             return(false)
         }
@@ -120,6 +120,7 @@ export default function Project() {
         .then((data) => {
             setProject(projectUpdated)
             setServices(servicesUpdated)
+            setType("success")
             setMessage("Serviço removido com sucesso!")
         })
         .catch((err) => console.log(err))
@@ -135,9 +136,20 @@ export default function Project() {
 
     let porcentagemUtilizadaOrcamento = () => {
         let porcentagem = project.cost / project.budget * 100;
-        let porcentagemFormatada = Number(porcentagem/100).toLocaleString(undefined, {style: 'percent', minimumFractionDigits:2});
+        let porcentagemFormatada = Number(porcentagem/100).toLocaleString(undefined, {style: 'percent', minimumFractionDigits: 2});
         return porcentagemFormatada;
     }
+
+    let porcentagemDisponivelOrcamento = () => {
+        let porcentagem = project.budget - project.cost;
+        let porcentagemFormatada = Number(porcentagem/10000).toLocaleString(undefined, {style: 'percent', minimumFractionDigits: 2});
+        return porcentagemFormatada;
+    }
+
+    let BRL = new Intl.NumberFormat('pt-br', {
+        style: 'currency',
+        currency: 'BRL',
+    });
 
     return (
         <>
@@ -156,10 +168,13 @@ export default function Project() {
                                         <span>Categoria: </span> {project.category.name}
                                     </p>
                                     <p>
-                                        <span>Total do Orçamento: </span> R${project.budget}
+                                        <span>Orçamento: </span> {BRL.format(project.budget)}
                                     </p>
                                     <p>
-                                        <span>Total Utilizado: </span> R${project.cost} ({porcentagemUtilizadaOrcamento()})
+                                        <span>Total Utilizado: </span> {BRL.format(project.cost)} ({porcentagemUtilizadaOrcamento()})
+                                    </p>
+                                    <p>
+                                        <span>Total Disponível: </span> {BRL.format(project.budget - project.cost)} ({porcentagemDisponivelOrcamento()})
                                     </p>
                                 </div>
                             ) : (
@@ -183,7 +198,7 @@ export default function Project() {
                         <Container customClass="start">
                             {services.length > 0 &&
                                 services.map((service) => (
-                                    <ServiceCard id={service.id} name={service.name} cost={service.cost} description={service.description} key={service.id} handleRemove={removeService} />
+                                    <ServiceCard id={service.id} name={service.name} cost={BRL.format(service.cost)} description={service.description} key={service.id} handleRemove={removeService} />
                                 ))
                             }
                             {services.length === 0 && <p>Não há serviços cadastrados.</p>}
