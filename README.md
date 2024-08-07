@@ -1,33 +1,52 @@
-<p align="center">
-  <img width="100px" src="https://github.com/lucasoliveirabr/costs-react/blob/main/src/img/logo_full.png" alt="Logo Costs">
-</p>
+<div align="center">
+  <img width="100px" src="https://github.com/lucasoliveirabr/costs-react/blob/main/src/img/logo_full.png" alt="Logo Costs" />
 
-<h1 align="center">Costs</h1>
+  <h1>Costs</h1>
 
-<p align="center">
-  Aplicação web de gestão orçamentária de projetos feita em React
-</p>
+  <p>
+    Aplicação web na qual é possível inserir projetos, adicionar serviços, descrever o orçamento e administrar os custos, possibilitando a gestão orçamentária de projetos. 
+  </p>
 
-![costs](https://user-images.githubusercontent.com/108704306/209760812-982a8eec-117b-4c54-b779-041b9fdae551.png)
+  <img src="https://img.shields.io/badge/-React.JS-black?style=for-the-badge&logoColor=white&logo=react&color=007ACC" alt="react.js" />
+  <br />
+  <br />
+  <img src="https://user-images.githubusercontent.com/108704306/209760812-982a8eec-117b-4c54-b779-041b9fdae551.png" alt="Tela inicial" />
+</div>
 
+<br />
 
-### Baixar dependências localmente
+# Execute o projeto localmente em sua máquina
 
-Após baixar o repositório:
+### Pré-requisitos
+
+Tenha os seguintes programas intalados em sua máquina:
+
+- [Git](https://git-scm.com/)
+- [Node.js](https://nodejs.org)
+
+### Clone o repositório
+
 ```bash
-- npm install
+git clone https://github.com/lucasoliveirabr/costs.git
+cd costs
 ```
 
-### Rodar o projeto
+### Baixe as dependências localmente
+
+```bash
+npm install
+```
+
+### Execute o projeto
 
 Executar o banco de dados:
 
 ```bash
-- npm run backend
+npm run backend
 ```
 
 Executar o projeto:
 
 ```bash
-- npm start
+npm start
 ```
