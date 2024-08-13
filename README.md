@@ -7,7 +7,8 @@
     Aplicação web na qual é possível inserir projetos, adicionar serviços, descrever o orçamento e administrar os custos, possibilitando a gestão orçamentária de projetos. 
   </p>
 
-  <img src="https://img.shields.io/badge/-React.JS-black?style=for-the-badge&logoColor=white&logo=react&color=007ACC" alt="react.js" />
+  <img src="https://img.shields.io/badge/React.JS-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB" alt="React.js" />
+  <img src="https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E" alt="JavaScript" />
   <br />
   <br />
   <img src="https://user-images.githubusercontent.com/108704306/209760812-982a8eec-117b-4c54-b779-041b9fdae551.png" alt="Tela inicial" />
