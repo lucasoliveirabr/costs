@@ -31,6 +31,7 @@ export default function Project() {
         })
         .then((resp) => resp.json())
         .then((data) => {
+            console.log(`project data:\n${JSON.stringify(data)}`)
             setProject(data)
             setServices(data.services)
         })
@@ -63,16 +64,14 @@ export default function Project() {
             .catch((err) => console.log(err))
     }
 
-    function createService(project) {
+    function createService() {
         setMessage("");
 
         const lastService = project.services[project.services.length - 1];
 
         lastService.id = uuidv4();
 
-        const lastServiceCost = lastService.cost;
-
-        const newCost = parseFloat(project.cost) + parseFloat(lastServiceCost);
+        const newCost = parseFloat(project.cost) + parseFloat(lastService.cost);
 
         if (newCost > parseFloat(project.budget)) {
             setMessage("Orçamento ultrapassado. Verifique o valor do serviço.");
@@ -90,10 +89,7 @@ export default function Project() {
             },
             body: JSON.stringify(project),
         })
-        .then((resp) => resp.json())
-        .then((data) => {
-            setShowServiceForm(false)
-        })
+        .then(setShowServiceForm(false))
         .catch((err) => console.log(err))
     }
 
@@ -104,21 +100,18 @@ export default function Project() {
             (service) => service.id !== id
         )
 
-        const projectUpdated = project;
+        project.services = servicesUpdated;
+        project.cost = parseFloat(project.cost) - parseFloat(cost);
 
-        projectUpdated.services = servicesUpdated;
-        projectUpdated.cost = parseFloat(projectUpdated.cost) - parseFloat(cost);
-
-        fetch(`http://localhost:5000/projects/${projectUpdated.id}`, {
+        fetch(`http://localhost:5000/projects/${project.id}`, {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify(projectUpdated)
+            body: JSON.stringify(project)
         })
-        .then((resp) => resp.json())
-        .then((data) => {
-            setProject(projectUpdated)
+        .then(() => {
+            setProject(project)
             setServices(servicesUpdated)
             setType("success")
             setMessage("Serviço removido com sucesso!")
@@ -135,21 +128,37 @@ export default function Project() {
     }
 
     let porcentagemUtilizadaOrcamento = () => {
-        let porcentagem = project.cost / project.budget * 100;
+        let porcentagem = (project.cost / project.budget) * 100;
         let porcentagemFormatada = Number(porcentagem/100).toLocaleString(undefined, {style: 'percent', minimumFractionDigits: 2});
         return porcentagemFormatada;
     }
 
     let porcentagemDisponivelOrcamento = () => {
-        let porcentagem = project.budget - project.cost;
-        let porcentagemFormatada = Number(porcentagem/10000).toLocaleString(undefined, {style: 'percent', minimumFractionDigits: 2});
-        return porcentagemFormatada;
+        let porcentagem = (100 - ((project.cost / project.budget) * 100))
+        let porcentagemFormatada = Number(porcentagem/100).toLocaleString(undefined, {style: 'percent', minimumFractionDigits: 2});
+        if (project.cost === 0) {
+            return "100%"
+        } else {
+            return porcentagemFormatada
+        }
     }
 
     let BRL = new Intl.NumberFormat('pt-br', {
         style: 'currency',
         currency: 'BRL',
     });
+
+    let getProgressBarColor = () => {
+        const ratio = project.cost / project.budget;
+
+        if (ratio < 0.5) {
+            return "#4CAF50" // primary
+        } else if (ratio < 0.75) {
+            return "#f0ad4e" // warning
+        } else {
+            return "#d9534f" // danger
+        }
+    }
 
     return (
         <>
@@ -176,6 +185,7 @@ export default function Project() {
                                     <p>
                                         <span>Total Disponível: </span> {BRL.format(project.budget - project.cost)} ({porcentagemDisponivelOrcamento()})
                                     </p>
+                                    <progress className={styles.progressBar} style={{ '--progress-bar-color': getProgressBarColor() }} value={project.budget - project.cost} max={project.budget}></progress>
                                 </div>
                             ) : (
                                 <div className={styles.project_info}>
@@ -198,7 +208,7 @@ export default function Project() {
                         <Container customClass="start">
                             {services.length > 0 &&
                                 services.map((service) => (
-                                    <ServiceCard id={service.id} name={service.name} cost={BRL.format(service.cost)} description={service.description} key={service.id} handleRemove={removeService} />
+                                    <ServiceCard id={service.id} name={service.name} cost={service.cost} description={service.description} key={service.id} handleRemove={removeService} />
                                 ))
                             }
                             {services.length === 0 && <p>Não há serviços cadastrados.</p>}

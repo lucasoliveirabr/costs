@@ -47,3 +47,33 @@
 .project_info {
     width: 100%;
 }
+
+.progressBar {
+    width: 200px;
+    display: block; /* default: inline-block */
+    margin-top: 1em;
+    padding: 3px;
+    /* border: 0 none; */
+    border-color: #222;
+    background: #efefef;
+    border-radius: 14px;
+}
+.progressBar::-moz-progress-bar {
+    border-radius: 12px;
+    /*background: #4CAF50;*/
+    background: var(--progress-bar-color, #4CAF50);
+}
+/* webkit */
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+    .progressBar {
+        height: 20px;
+    }
+}
+.progressBar::-webkit-progress-bar {
+    background: transparent;
+}
+.progressBar::-webkit-progress-value {  
+    border-radius: 12px;
+    /*background: #4CAF50;*/
+    background: var(--progress-bar-color, #4CAF50);
+}

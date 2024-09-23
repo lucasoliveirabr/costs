@@ -1,5 +1,5 @@
 <div align="center">
-  <img width="100px" src="https://github.com/lucasoliveirabr/costs-react/blob/main/src/img/logo_full.png" alt="Logo Costs" />
+  <img width="100px" src="https://raw.githubusercontent.com/lucasoliveirabr/costs/refs/heads/main/src/img/logo_full.png" alt="Logo Costs" />
 
   <h1>Costs</h1>
 
